@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 
 export default function NavBar(){
     return(
-        <nav>
-            {/* "linked to path ..." */}
-            <Link to={'/'}>Home</Link>
-            <Link to={'/animations'}>Animations</Link>
-            <Link to={'/literary_works'}>Literary Works</Link>
-            <Link to={'/about'}>About</Link>
-        </nav>
+        <div className="navbar">
+            <nav>
+                {/* "linked to path ..." */}
+                <Link to={'/'}>Home</Link>
+                <Link to={'/animations'}>Animations</Link>
+                <Link to={'/literary_works'}>Literary Works</Link>
+                <Link to={'/about'}>About</Link>
+            </nav>
+        </div>
     )
 }

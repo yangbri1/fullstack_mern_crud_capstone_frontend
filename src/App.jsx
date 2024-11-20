@@ -10,6 +10,7 @@ import NotFound from './pages/NotFound.jsx';
 import Animations from './pages/Animations.jsx';
 // Aside: if didn't export function as default -- need to destructure within file where it's being imported
 import { Literary_Works } from './pages/Literary_Works.jsx';
+import Rating from './pages/Rating.jsx';
 
 // bring in navigation links to App.jsx rather than individual pages (more efficient & App.jsx is the brain of the operation)
 import NavBar from './components/NavBar.jsx';
@@ -25,14 +26,15 @@ function App() {
       {/* Routes will always be a container for route (can only have route) */}
       {/* Route CANNOT exist outside of Routes (can be self-closing & each rep a dif URL path) */}
       {/* Every Route component has 2 attributes "path" and "element" */}
-      {/* Route's attribute "element" must of a <functional component /> */}
+      {/* Route's attribute "element" must be passed in as <functional components /> */}
       <Routes>
         {/* Order routes from most specific to vague */}
         <Route path='/' element={<Home />} />
         <Route path='/animations' element={<Animations />} />
         <Route path='/literary_works' element={<Literary_Works />} />
         <Route path='/about' element={<About />} />
-        <Route path='/animations/animation/:name' element={<Animations />}></Route>
+        <Route path='/animations/animation/:name' element={<Animations />} />
+        <Route path='/literary_works/literary_work/:title ' element={<Rating />} />
         {/* catch all route for any unforeseen URL paths (should be last in order otw may interfere w/ other routes) */}
         <Route path='*' element={<NotFound />} />
       </Routes>
