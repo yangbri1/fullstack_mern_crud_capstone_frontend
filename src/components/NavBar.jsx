@@ -6,6 +6,8 @@ export default function NavBar(){
         <nav>
             {/* "linked to path ..." */}
             <Link to={'/'}>Home</Link>
+            <Link to={'/animations'}>Animations</Link>
+            <Link to={'/literary_works'}>Literary Works</Link>
             <Link to={'/about'}>About</Link>
         </nav>
     )
