@@ -1,7 +1,7 @@
 // import <Link> component to navigate to other pages
 import { Link } from "react-router-dom";
 
-export function Literary_Works(){
+export default function Literary_Works(){
     // sample data from "literary_work_data.mjs" in the back-end server
     const literary_works = [
         {
@@ -40,12 +40,12 @@ export function Literary_Works(){
                 {/* need to use JS array methods .map(), .filter() or other techniques to manipulate data in React (normal .push() etc DN work) */}
                 {/* using .map() method to copy "literary_works" array , perform some action and reveal a NEW array */}
                 {literary_works.map((comic) => {
-                    // destructure out some attributes from "comic" obj {} for later use
+                    // destructure out some attributes from array literary_works "props" placed in "comic" obj {} for later use
                     const { title, type, ratings } = comic;
                     // create some <link> components to listed works dynamically
                     return(
-                        <Link to={`/literary_works/rating/${title}`}>
-                            <h3>{title} [{ratings}]</h3>
+                        <Link to={`/literary_works/ratings/${title}`}>
+                            <h3>{title} [{type}]</h3>
                         </Link>
                     );
                 })}
