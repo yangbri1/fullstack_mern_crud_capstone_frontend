@@ -1,6 +1,6 @@
 // import Routes, Route from react-router-dom library
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 
 // take in all the pages
@@ -17,9 +17,31 @@ import Ratings from './pages/Ratings.jsx';
 import NavBar from './components/NavBar.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [info, setInfo] = useState(null);
 
+  // const [drama, setDrama] = useState(null); // for later 3rd party API use
   console.log(import.meta.env.VITE_apiKey);
+
+  // const url = `` // for API URL later
+
+  async function getData(){
+    try {
+      let res = await fetch(`http://localhost:3000`);
+      let data = await res.json();  // convert data into readable JSON format
+      
+      setInfo(data);
+    } catch (err) {
+      console.error(err);
+      
+    }
+  }  
+
+  // useEffect setup w/ arrow fn
+  useEffect(() => {
+    // invoke getData() fn to connect to custom server-side db & retireve some data
+    getData();
+  }, []);   // dependencies list/array of [] means only run on initial render 
+
   return (
     // functional components outside of <Routes> components DN change per page, each Route/page may change
     <>
