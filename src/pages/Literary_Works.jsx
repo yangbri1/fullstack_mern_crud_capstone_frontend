@@ -1,7 +1,12 @@
 // import <Link> component to navigate to other pages
 import { Link } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+
 export default function Literary_Works(){
+
+    let [work, setWork] = useState(null);
+
     // sample data from "literary_work_data.mjs" in the back-end server
     const literary_works = [
         {
@@ -33,22 +38,36 @@ export default function Literary_Works(){
         }
     ];
 
+    useEffect(() => {
+        async function getData(){
+            try {
+                let res = await fetch(`http://localhost:3000/literary_works/`);
+                let data = await res.json();    // this step automatically done if using axios
+                
+                setWork(data);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        getData();
+    }, []); // initial render
+
     return(
         <>
             <h1>List of Literary Works</h1>
             <div className="literary_works">
                 {/* need to use JS array methods .map(), .filter() or other techniques to manipulate data in React (normal .push() etc DN work) */}
                 {/* using .map() method to copy "literary_works" array , perform some action and reveal a NEW array */}
-                {literary_works.map((comic) => {
+                {work ? work.map((comic) => {
                     // destructure out some attributes from array literary_works "props" placed in "comic" obj {} for later use
                     const { title, type, ratings } = comic;
                     // create some <link> components to listed works dynamically
                     return(
-                        <Link to={`/literary_works/ratings/${title}`}>
+                        <Link key={name} to={`/literary_works/literary_work/${comic._id}`}>
                             <h3>{title} [{type}]</h3>
                         </Link>
                     );
-                })}
+                }) : <h1>Loading ... </h1>}
             </div>
         </>
     
