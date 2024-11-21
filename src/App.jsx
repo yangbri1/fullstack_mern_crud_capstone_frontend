@@ -19,6 +19,7 @@ import NavBar from './components/NavBar.jsx';
 function App() {
   const [count, setCount] = useState(0)
 
+  console.log(import.meta.env.VITE_apiKey);
   return (
     // functional components outside of <Routes> components DN change per page, each Route/page may change
     <>
