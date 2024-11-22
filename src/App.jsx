@@ -6,13 +6,13 @@ import './App.css'
 // take in all the pages
 // Aside: if didn't export function as default -- need to destructure within file where it's being imported
 import Home from './pages/Home.jsx';
-import About from './pages/About.jsx';
+import Forums from './pages/Forums/Forums.jsx';
 import NotFound from './pages/NotFound.jsx';
 
-import Animations from './pages/Animations.jsx';
-import Name_Ani from './pages/Name_Ani.jsx';
-import Literary_Works from './pages/Literary_Works.jsx';
-import Title_LW from './pages/Title_LW.jsx';
+import Animations from './pages/Animations/Animations.jsx';
+import Name_Ani from './pages/Animations/Name_Ani.jsx';
+import Literary_Works from './pages/Literary_Works/Literary_Works.jsx';
+import Title_LW from './pages/Literary_Works/Title_LW.jsx';
 
 // bring in navigation links to App.jsx rather than individual pages (more efficient & App.jsx is the brain of the operation)
 import NavBar from './components/NavBar.jsx';
@@ -37,12 +37,12 @@ function App() {
         <Route path='/literary_works/literary_work/:id' element={<Title_LW />} />
         <Route path='/animations' element={<Animations />} />
         <Route path='/literary_works' element={<Literary_Works />} />
-        <Route path='/about' element={<About />} />
+        <Route path='/forums' element={<Forums />} />
         
         {/* catch all route for any unforeseen URL paths (should be last in order otw may interfere w/ other routes) */}
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <footer>Started from the bottom now we here</footer>
+      <footer>Affiliations/Social Media -- maybe change to component later</footer>
     </>
   )
 }

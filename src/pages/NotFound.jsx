@@ -1,4 +1,4 @@
-/* import useEffect() hook to perform side effects / transitions in <NotFound> component
+/* import useEffect() hook to perform side effects/transitions(timer) in <NotFound> component
    useState() hook to hold state of counter */
 import { useEffect, useState } from "react";
 // useNavigate() hook to navigate away w/o use of <Link> component
@@ -19,7 +19,7 @@ export default function NotFound(){
         }, 1000);   // 1000 ms (1s)
         // if counter hits 0 ... navigate to home page
         counter == 0 && nav(`/`);
-    }, [counter]);  // setting dependencies array to "counter" so effect will run whenever "counter" state changes
+    }, [counter]);  // setting dependencies array to "counter" so effect will trigger whenever "counter" state changes
     return(
         <>  
             <h1>Redirecting in {counter} ...</h1>

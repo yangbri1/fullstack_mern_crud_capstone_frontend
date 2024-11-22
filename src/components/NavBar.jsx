@@ -9,7 +9,7 @@ export default function NavBar(){
                 <Link to={'/'}>Home</Link>
                 <Link to={'/animations'}>Animations</Link>
                 <Link to={'/literary_works'}>Literary Works</Link>
-                <Link to={'/about'}>About</Link>
+                <Link to={'/forums'}>Forums</Link>
             </nav>
         </div>
     )
