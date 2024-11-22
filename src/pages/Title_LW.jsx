@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 // useState() hook to hold state
 import { useEffect, useState } from "react";
 
-export default function Title(){
+export default function Title_LW(){
     // destructure to pull out params (:id) from  obj --- dynamic route '/literary_works/literary_work/:id'
     const { id } = useParams();
     
