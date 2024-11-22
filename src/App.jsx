@@ -32,7 +32,7 @@ function App() {
       <Routes>
         {/* Order routes from most specific to vague */}
         <Route path='/' element={<Home />} />
-        <Route path='/animations/animation/:name' element={<Animations />} />
+        <Route path='/animations/animation/:id' element={<Animations />} />
         <Route path='/literary_works/literary_work/:id' element={<Title />} />
         <Route path='/animations' element={<Animations />} />
         <Route path='/literary_works' element={<Literary_Works />} />

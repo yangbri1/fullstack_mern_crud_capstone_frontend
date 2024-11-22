@@ -21,6 +21,7 @@ export default function Home(){
         // prevent default behavior (page refresh/re-render GAAAHHH)
         event.preventDefault();
         // apply string interpolation ${} within template literals (``) to dynamically navigate to the URL of formData
+        
         nav(`/animations/animation/${formData}`)
     }
 
@@ -31,7 +32,7 @@ export default function Home(){
             {/* fires off handleSubmit() function upon submission */}
             <form onSubmit={handleSubmit}>
                 {/* Why not onClick? -- Only accounts for button clicks not entering */}
-                <input type="text" onChange={handleChange} />
+                <input onChange={handleChange} placeholder="Search animation, literary work,..." type="text"  />
                 <input type="submit"  />
             </form>
         </>

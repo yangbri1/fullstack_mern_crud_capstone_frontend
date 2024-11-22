@@ -1,6 +1,6 @@
 // import <Link> component to navigate to other pages
 import { Link } from "react-router-dom";
-
+// import useState(), useEffect() React hooks combo to manage 
 import { useEffect, useState } from "react";
 
 export default function Literary_Works(){

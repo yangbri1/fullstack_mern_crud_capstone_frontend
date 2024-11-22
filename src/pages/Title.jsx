@@ -5,18 +5,20 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export default function Title(){
-    // destructure to pull out params (:name) from  obj --- dynamic route '/literary_works/literary_work/:name'
+    // destructure to pull out params (:id) from  obj --- dynamic route '/literary_works/literary_work/:id'
     const { id } = useParams();
     
-    // hold info state
+    // initialize state "info" for backend data 
     const [info, setInfo] = useState(null);
 
-    // async function to retrieve data from db
+    // "async" function required to "async" fetch data from db
     async function getData(){
         try {
+            // fetch get from HTTP GET one document by :id
             let res = await fetch(`http://localhost:3000/literary_works/literary_work/${id}`);
+            // convert incoming data to JSON format
             let data = await res.json();    // this step automatically done if using axios
-            
+            // set state "info" from null to data being feed in
             setInfo(data);
         } catch (err) {
             console.error(err);
@@ -37,7 +39,7 @@ export default function Title(){
         return(
             // functional components outside of <Routes> components DN change per page, each Route/page may change
             <>
-                {name}
+                {/* {name} */}
                 <div>
                     <h1>{info.title}</h1>
                     <h3>{info.ratings}</h3>
@@ -46,6 +48,7 @@ export default function Title(){
             </>
         )
     }
+    // ternary operator with && logical operator to conditionally render
     return info && info.title ? loaded() : loading();
 
     // return(
