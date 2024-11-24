@@ -34,6 +34,15 @@ export default function Forums(){
         // getForum();
     }, []); // dependencies list/array set to empty -- only render initially (once)
     
+    // handler for delete functionality
+    function handleDelete(id){
+        // redeclare state to new changes
+        // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
+        setPosts(posts.filter(post =>
+            // if post's unique "_id" does NOT equal to backend, keep it
+            post._id !== id
+        ));
+    }
     return(
         <>
             <h1>Forum Page</h1>
@@ -54,11 +63,9 @@ export default function Forums(){
                             {/* DeleteMsg(mention._id); */}
 
                             <label id="delete-btn">
-                                <input type="submit" id="delete-btn" value="Delete🗑️" title="Are you sure?"
+                                <input type="button" id="delete-btn" value="Delete🗑️" title="Are you sure?"
                                     onClick={() => {
-                                        return(posts.filter((msg) => 
-                                            msg._id !== mention._id
-                                        ))
+                                        handleDelete(mention._id);
                                     }}
                                         // dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
                                     // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
