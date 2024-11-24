@@ -11,14 +11,21 @@ function CreateFormMsg(){
     const nav = useNavigate();
 
     // declare an state w/ initial values of ...
-    const [formData, setFormData] = useState({
-        // must match "forumSchema" schema fields in backend
-        heading: '',
-        urgency: 0,
-        message: '',
-        signed: '',
-        human: false
-    });
+    // const [formData, setFormData] = useState({
+    //     // must match "forumSchema" schema fields in backend
+    //     heading: '',
+    //     urgency: 0,
+    //     message: '',
+    //     signed: '',
+    //     human: false
+    // });
+
+    // testing useState() for each props in object
+    const [heading, setHeading] = useState('');
+    const [urgency, setUrgency] = useState(1);
+    const [message, setMessage] = useState('');
+    const [signed, setSigned] = useState('');
+    const [human, setHuman] = useState(false);
 
     /* component (event) handler functions */
     function handleClick(evt){
@@ -61,45 +68,40 @@ function CreateFormMsg(){
         }
     }
 
-
-    // const [formData, setFormData] = useState({
-    //     // must match "forumSchema" schema fields in backend
-    //     heading: '',
-    //     urgency: 0,
-    //     message: '',
-    //     signed: '',
-    //     human: false
-    // });
     return(
         // React fragments to as overhead parent element else error
         <>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="heading">
                     Heading: 
-                    <input onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" />
+                    <input onChange={(e) => setHeading(e.target.value)} value={heading} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" />
                 </label>
                 <label htmlFor="urgency">
                     Urgency: 
-                    <input onChange={handleChange} id="urgency" type="number" name="urgency" alt="level of priority" placeholder="Degree of urgency" />
+                    <input onChange={(e) => setUrgency(e.target.value)} value={urgency} id="urgency" type="number" name="urgency" alt="level of priority" placeholder="Degree of urgency" />
                 </label>
                 <label htmlFor="message">
                     Message: 
-                    <input onChange={handleChange} id="message" type="text" name="message" alt="message body" placeholder="Concern, idea, advice, experience, suggestion, ..." />
+                    <input onChange={(e) => setMessage(e.target.value)} value={message} id="message" type="text" name="message" alt="message body" placeholder="Concern, idea, advice, experience, suggestion, ..." />
                 </label>
                 <label htmlFor="signed">
                     Signed: 
-                    <input onChange={handleChange} id="signed" type="text" name="user id" placeholder="User ID" />
+                    <input onChange={(e) => setSigned(e.target.value)} value={signed} id="signed" type="text" name="signed" alt="user id" placeholder="User ID" />
                 </label>
-                <label htmlFor="signed">
+                <label htmlFor="human">
                     Human Test: 
+                    <input onChange={(e) => setHuman(e.target.value)} value={human} id="human" type="checkbox" name="human" alt="are you real?" placeholder="Captcha" />
+
                     {/* dropdown menu of options */}
-                    <select onChange={handleChange} id="signed" type="text" name="user id" placeholder="User ID">
+                    {/* <select onChange={handleChange} id="human" type="text" name="human" placeholder="Captcha">
                         <option value="false">BEEP BOOP R.O.B.O.T I A.M.🤖</option>
                         <option value="true">Let me in! I'm human!!🙂</option>
-                    </select>
+                    </select> */}
                 </label>
             </form>
-            <button onClick={handleClick}>Send It!</button>
+            {/* <button onClick={handleClick}>Send It!</button> */}
+            <button type="submit">Send It!</button>
+
         </>
     )
 }   

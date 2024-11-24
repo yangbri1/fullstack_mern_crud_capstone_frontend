@@ -21,11 +21,14 @@ async function createMsg(formData){
         // path url to server-side
         let url = `http://localhost:3000/forums`;
 
-        // formData.message = 
+        formData.message = formData.message + `✔️`;
         // accessing backend forums endpoint
-        let res = await axios.post(url, formData);
+        // let res = await axios.post(url, formData);
+        let res = await fetch(url);
+        let data = await res.json();
         // show the retrieved data
-        return (res.data);
+        // return (res.data);
+        return(data);
     } catch (err) {
         console.error(err);
     }
