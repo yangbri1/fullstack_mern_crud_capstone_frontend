@@ -93,13 +93,13 @@ function CreateFormMsg(){
                 <br />
                 <label htmlFor="message">
                     Message: {" "}
-                    <textarea value={formData.message} onChange={handleChange} id="message" type="text" name="message" alt="message body" placeholder="Concerns, ideas, advices, ..." required 
+                    <textarea value={formData.message} onChange={handleChange} id="message" type="textarea" name="message" alt="message body" placeholder="Concerns, ideas, advices, ..." required 
                                     style={{ width: 300, height: 200 }}/>
                 </label>
                 <br />
                 <label htmlFor="signed">
                     Signed: {" "}
-                    <input value={formData.signed} onChange={handleChange} id="signed" type="textrea" name="signed" alt="user id" placeholder="User ID" />
+                    <input value={formData.signed} onChange={handleChange} id="signed" type="text" name="signed" alt="user id" placeholder="User ID" />
                 </label>
                 <br />
                 <label htmlFor="human">

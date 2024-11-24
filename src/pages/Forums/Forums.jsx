@@ -42,10 +42,16 @@ export default function Forums(){
                     // destructure out wanted info
                     const { heading, urgency, message, signed } = mention;
                     return(
-                        // populate page with fetched forum data & dynamically <Link> up each one to own page
-                        <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
-                            <h3>{heading} [{urgency}]</h3>
-                        </Link>
+                        <>
+                            {/* // populate page with fetched forum data & dynamically <Link> up each one to own page */}
+                            <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
+                                <h3>{heading} [{urgency}]</h3>
+                            </Link>
+                            <Link key={heading} to={`/forums/update_mention/${mention._id}`}>Edit</Link>
+                        </>
+                        /* Note: "Warning: Each child in a list should have a unique 'key' prop 
+                         appeared when 2nd <Link> component was added... {heading} & {index} after setting .map(mention, index) DN work either" */
+                        
                         // <>
                         //     <h2>{heading}</h2>
                         //     <h4>{message}</h4>

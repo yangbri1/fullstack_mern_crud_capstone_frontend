@@ -37,7 +37,7 @@ function App() {
         {/* Order routes from most specific to vague */}
         <Route path='/' element={<Home />} />
         <Route path='/forums/addComment' element={<CreateFormMsg />} />
-        <Route path='/forums/updateComment/:id' element={<UpdateFormMsg />} />
+        <Route path='/forums/update_mention/:id' element={<UpdateFormMsg />} />
         <Route path='/animations/animation/:id' element={<Name_Ani />} />
         <Route path='/literary_works/literary_work/:id' element={<Title_LW />} />
         <Route path='/forums/forum/:id' element={<Mention />} />
