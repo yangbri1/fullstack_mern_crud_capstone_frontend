@@ -1,11 +1,10 @@
-import { useParams } from "react-router-dom"
 // import useEffect() to fetch data from backend
 // import useState() to hold state
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 // <Link> component to re-direct to other pages
 import { Link } from "react-router-dom";
 
-import { getForum } from "../../utilities/controllers.mjs";
+// import { getForum } from "../../utilities/controllers.mjs";      // controller functions not working
 
 /* Note: "Components (little pieces add to a page) are parts of a page (entire URL)" */
 // create React functional component
@@ -15,22 +14,22 @@ export default function Forums(){
     let [posts, setPosts] = useState(null);
 
     useEffect(() => {
-        // async function getData(){
-        //     try {
-        //         // fetch data from forums endpoint in backend
-        //         let res = await fetch(`http://localhost:3000/forums/`);
-        //         // convert to usable JSON string format (obj)
-        //         let data = await res.json();    // omit this step while using axios (inherently done)
-        //         // sets "posts" state to retrieved data
-        //         setPosts(data);
-        //     } catch (err) {
-        //         // console out error in encounter any
-        //         console.error(err);
-        //     }
-        // }
-        // // invoke above asynchronous fn
-        // getData();
-        getForum();
+        async function getData(){
+            try {
+                // fetch data from forums endpoint in backend
+                let res = await fetch(`http://localhost:3000/forums/`);
+                // convert to usable JSON string format (obj)
+                let data = await res.json();    // omit this step while using axios (inherently done)
+                // sets "posts" state to retrieved data
+                setPosts(data);
+            } catch (err) {
+                // console out error in encounter any
+                console.error(err);
+            }
+        }
+        // invoke above asynchronous fn
+        getData();
+        // getForum();
     }, []); // dependencies list/array set to empty -- only render initially (once)
     
     return(
@@ -38,8 +37,8 @@ export default function Forums(){
             <h1>Forum Page</h1>
             <div className="msg_board">
                 {/* if posts exists, call JS array method .map() on it to create a new copy w/ wanted filters */}
-                {/* {posts ? posts.map((mention) => { */}
-                {getForum() ? getForum().map((mention) => {
+                {posts ? posts.map((mention) => {
+                {/* {getForum() ? getForum().map((mention) => { */}
                     // destructure out wanted info
                     const { heading, urgency, message, signed } = mention;
                     return(
