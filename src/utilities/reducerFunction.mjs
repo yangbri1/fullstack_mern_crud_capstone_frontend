@@ -54,7 +54,7 @@ export function msgReducer(comments, action){
 
         // default action if neither of the actions above are invoked
         default:
-            // return state
+            // return current state
             return todos;
     }
 }

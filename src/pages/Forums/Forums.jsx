@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom"
 // import useEffect() to fetch data from backend
 // import useState() to hold state
 import { useEffect, useState } from "react"
+// <Link> component to re-direct to other pages
+import { Link } from "react-router-dom";
+
 /* Note: "Components (little pieces add to a page) are parts of a page (entire URL)" */
 // create React functional component
 export default function Forums(){
@@ -30,17 +33,21 @@ export default function Forums(){
     return(
         <>
             <h1>Forum Page</h1>
-            <div className="forums">
+            <div className="msg_board">
                 {/* if posts exists, call JS array method .map() on it to create a new copy w/ wanted filters */}
-                {posts ? posts.map((remark) => {
+                {posts ? posts.map((mention) => {
                     // destructure out wanted info
-                    const { heading, message, signed } = remark;
+                    const { heading, urgency, message, signed } = mention;
                     return(
-                        <>
-                            <h2>{heading}</h2>
-                            <h4>{message}</h4>
-                            <p><b>Username</b>: <i>{signed}</i></p>
-                        </> 
+                        // populate page with fetched forum data & dynamically <Link> up each one to own page
+                        <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
+                            <h3>{heading} [{urgency}]</h3>
+                        </Link>
+                        // <>
+                        //     <h2>{heading}</h2>
+                        //     <h4>{message}</h4>
+                        //     <p><b>Username</b>: <i>{signed}</i></p>
+                        // </> 
                     );
                 // if posts do NOT exist push out "Loading ..." indicator
                 }) : <h1>Loading ...</h1>}

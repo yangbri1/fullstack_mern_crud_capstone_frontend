@@ -10,6 +10,7 @@ export default function NavBar(){
                 <Link to={'/animations'}>Animations</Link>
                 <Link to={'/literary_works'}>Literary Works</Link>
                 <Link to={'/forums'}>Forums</Link>
+                <Link to={'/forums/addComment'}>Suggestion</Link>
             </nav>
         </div>
     )

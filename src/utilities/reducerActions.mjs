@@ -1,4 +1,4 @@
-// hardcoded ACTION obj -- reduce chances of error 
+// hardcoded ACTION obj -- reduce chances of error as can auto-complete
 export const ACTION = {
     ADDMSG: 'addMsg',
     REMOVEMSG: 'removeMsg',

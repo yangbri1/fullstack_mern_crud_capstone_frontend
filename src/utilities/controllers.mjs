@@ -9,7 +9,7 @@ async function getForum(){
         // accessing backend forums endpoint
         let res = await axios.get(url);
         // show the retrieved data
-        return res.data;
+        return (res.data);
     } catch (err) {
         console.error(err);
     }
@@ -25,10 +25,32 @@ async function createMsg(formData){
         // accessing backend forums endpoint
         let res = await axios.post(url, formData);
         // show the retrieved data
-        return res.data;
+        return (res.data);
     } catch (err) {
         console.error(err);
     }
 }
 
-export { getForum, createMsg };
+// update a comment to the db
+async function updateMsg(id, formData){
+    try {
+        let url = `http://localhost:3000/forums/${id}`;
+        let res = await axios.put(url, formData);
+        return (res.data);
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+// delete a comment from the db
+async function deleteMsg(id, formData){
+    try {
+        let url = `http://localhost:3000/forums/${id}`;
+        let res = await axios.delete(url, formData);
+        // to indicate deletion processed through
+        return true;
+    } catch (err) {
+        console.error(err);
+    }
+}
+export { getForum, createMsg, updateMsg, deleteMsg };
