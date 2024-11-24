@@ -46,14 +46,29 @@ async function updateMsg(id, formData){
 }
 
 // delete a comment from the db
-async function deleteMsg(id, formData){
+async function deleteMsg(id){
     try {
         let url = `http://localhost:3000/forums/${id}`;
-        let res = await axios.delete(url, formData);
+        // technically do NOT need to initialize res if only want delete action
+        let res = await axios.delete(url);
         // to indicate deletion processed through
         return true;
     } catch (err) {
         console.error(err);
     }
 }
-export { getForum, createMsg, updateMsg, deleteMsg };
+
+// call forth this function in conjunction when updating or deleting one document fro mdb
+async function findOneMsg(id){
+    try {
+        // path url to server-side
+        let url = `http://localhost:3000/forums/${id}`;
+        // accessing backend forums endpoint
+        let res = await axios.get(url);
+        // show the retrieved data
+        return (res.data);
+    } catch (err) {
+        console.error(err);
+    }
+}
+export { getForum, createMsg, updateMsg, deleteMsg, findOneMsg };

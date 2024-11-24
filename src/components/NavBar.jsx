@@ -11,7 +11,8 @@ export default function NavBar(){
                 <Link to={'/literary_works'}>Literary Works</Link>
                 <Link to={'/forums'}>Forums</Link>
                 <Link to={'/forums/addComment'}>Suggestion</Link>
+                <Link to={'/forums/updateComment'}>Edit</Link>
             </nav>
         </div>
-    )
+    );
 }

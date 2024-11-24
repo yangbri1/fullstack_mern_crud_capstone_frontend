@@ -17,7 +17,7 @@ function CreateFormMsg(){
     const [formData, setFormData] = useState({
         // must match "forumSchema" schema fields in backend
         heading: '',
-        urgency: 0,
+        urgency: 1,
         message: '',
         signed: '',
         human: false
@@ -78,25 +78,32 @@ function CreateFormMsg(){
     return(
         // React fragments to as overhead parent element else error
         <>
+            <h2>Create Forum Message</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="heading">
-                    Heading: 
+                    Heading: {" "}
                     <input value={formData.heading} onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" required />
+                    
                 </label>
+                <br />
                 <label htmlFor="urgency">
-                    Urgency: 
+                    Urgency: {" "}
                     <input value={formData.urgency} onChange={handleChange} id="urgency" type="number" name="urgency" alt="level of priority" placeholder="Degree of urgency" required />
                 </label>
+                <br />
                 <label htmlFor="message">
-                    Message: 
-                    <input value={formData.message} onChange={handleChange} id="message" type="text" name="message" alt="message body" placeholder="Concern, idea, advice, experience, suggestion, ..." required />
+                    Message: {" "}
+                    <textarea value={formData.message} onChange={handleChange} id="message" type="text" name="message" alt="message body" placeholder="Concerns, ideas, advices, ..." required 
+                                    style={{ width: 300, height: 200 }}/>
                 </label>
+                <br />
                 <label htmlFor="signed">
-                    Signed: 
-                    <input value={formData.signed} onChange={handleChange} id="signed" type="text" name="signed" alt="user id" placeholder="User ID" />
+                    Signed: {" "}
+                    <input value={formData.signed} onChange={handleChange} id="signed" type="textrea" name="signed" alt="user id" placeholder="User ID" />
                 </label>
+                <br />
                 <label htmlFor="human">
-                    Human Test: 
+                    Human Test: {" "}
                     {/* Notice: "checked" property here instead of "value" as this is of type checkbox */}
                     <input checked={formData.human} onChange={handleChange} id="human" type="checkbox" name="human" alt="are you real?" placeholder="Captcha" />
 
@@ -106,9 +113,10 @@ function CreateFormMsg(){
                         <option value="true">Let me in! I'm human!!🙂</option>
                     </select> */}
                 </label>
+                <br />
                 {/* <button onClick={handleClick}>Send It!</button> */}
                 <button type="submit">Send It!</button>
-                
+
             </form>
         </>
     )
