@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { findOneMsg, updateMsg } from "../../utilities/controllers.mjs";
+// import { findOneMsg, updateMsg } from "../../utilities/controllers.mjs";
 
 // import axios to fetch data from db
 import axios from 'axios';
@@ -41,9 +41,9 @@ function UpdateFormMsg(){
         getData();
     }, []); // dependencies list/array empty [] -- render only once
 
-    function handleClick(event){
-        nav('/forums');
-    }
+    // function handleClick(event){
+    //     nav('/forums');
+    // }
 
     function handleChange(event){
         // destructure out some attributes from event.target

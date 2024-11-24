@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 // import { getForum } from "../../utilities/controllers.mjs";      // controller functions not working
 
+import DeleteMsg from "./DeleteMsg";
+
 /* Note: "Components (little pieces add to a page) are parts of a page (entire URL)" */
 // create React functional component
 export default function Forums(){
@@ -20,7 +22,7 @@ export default function Forums(){
                 let res = await fetch(`http://localhost:3000/forums/`);
                 // convert to usable JSON string format (obj)
                 let data = await res.json();    // omit this step while using axios (inherently done)
-                // sets "posts" state to retrieved data
+                // sets "posts" state to retrieved data aka get ALL posts from backend
                 setPosts(data);
             } catch (err) {
                 // console out error in encounter any
@@ -48,6 +50,24 @@ export default function Forums(){
                                 <h3>{heading} [{urgency}]</h3>
                             </Link>
                             <Link key={heading} to={`/forums/update_mention/${mention._id}`}>Edit</Link>
+                            {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
+                            {/* DeleteMsg(mention._id); */}
+
+                            <label id="delete-btn">
+                                <input type="submit" id="delete-btn" value="Delete🗑️" title="Are you sure?"
+                                    onClick={() => {
+                                        return(posts.filter((msg) => 
+                                            msg._id !== mention._id
+                                        ))
+                                    }}
+                                        // dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
+                                    // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
+                                    // Aside: DN know "disabled" could be written this way 
+                                    // ternary operator to conditionally enable "Delete" functionality when task's complete status is true
+                                    // Notice: "Delete" button availability depends on "Toggle" (green -- task.complete == true, red -- task.complete == false)
+                                    // disabled={task.complete ? false : true} // disabled={!task.complete} works too
+                                />
+                            </label>
                         </>
                         /* Note: "Warning: Each child in a list should have a unique 'key' prop 
                          appeared when 2nd <Link> component was added... {heading} & {index} after setting .map(mention, index) DN work either" */

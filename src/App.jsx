@@ -16,6 +16,7 @@ import Title_LW from './pages/Literary_Works/Title_LW.jsx';
 import CreateFormMsg from './pages/CreateFormMsg.jsx';
 import Mention from './pages/Forums/Mention.jsx';
 import UpdateFormMsg from './pages/Literary_Works/UpdateFormMsg.jsx';
+import DeleteMsg from './pages/Forums/DeleteMsg.jsx';
 
 // bring in navigation links to App.jsx rather than individual pages (more efficient & App.jsx is the brain of the operation)
 import NavBar from './components/NavBar.jsx';
@@ -38,6 +39,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/forums/addComment' element={<CreateFormMsg />} />
         <Route path='/forums/update_mention/:id' element={<UpdateFormMsg />} />
+        <Route path='/forums/delete_mention/:id' element={<DeleteMsg />} />
         <Route path='/animations/animation/:id' element={<Name_Ani />} />
         <Route path='/literary_works/literary_work/:id' element={<Title_LW />} />
         <Route path='/forums/forum/:id' element={<Mention />} />
