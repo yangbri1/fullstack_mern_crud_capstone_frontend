@@ -4,19 +4,19 @@ import { Link } from "react-router-dom";
 export default function NavBar(){
     return(
         <div className="navbar">
-            <nav style={{ display: 'flex', gap: '20px'}}>
-                <h2>
+            <nav style={{ display: 'flex', gap: '20px', padding: "20px"}}>
+                
                     {/* "linked to path ..." */}
-                    <Link to={'/'}>Home{"\n "}</Link>
-                    <Link to={'/animations'}>Animations</Link>
-                    <Link to={'/literary_works'}>Literary Works</Link>
-                    <Link to={'/forums'}>Forums</Link>
-                    <Link to={'/forums/addComment'}>Suggestion</Link>
+                    <Link to={'/'}>Home{"\t "}</Link>
+                    <Link to={'/animations'}>Animations{"\t "}</Link>
+                    <Link to={'/literary_works'}>Literary Works{"\t "}</Link>
+                    <Link to={'/forums'}>Forums{"\t "}</Link>
+                    <Link to={'/forums/addComment'}>Suggestion{"\t "}</Link>
                     {/* /forums/update_mention path deliberately never created so will re-direct to 404 NOT FOUND (catch all *) Page*/}
                     <Link to={'/forums/update_mention'}>Report</Link>
                     {/* actual catch all * page */}
                     {/* <Link to={'/*'}>Report All</Link> */}
-                </h2>
+                
             </nav>
         </div>
     );

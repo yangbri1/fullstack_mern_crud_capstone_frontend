@@ -55,7 +55,7 @@ export default function Forums(){
     }
     return(
         <>
-            <h1 title="Community posts here" alt="Community forums">Forum Page</h1>
+            <h1 title="Community posts here" alt="Community forums">Community Forums Page</h1>
             <div className="msg_board" alt="List of posts below">
                 {/* if posts exists, call JS array method .map() on it to create a new copy w/ wanted filters */}
                 {posts ? posts.map((mention) => {
@@ -63,12 +63,15 @@ export default function Forums(){
                     // destructure out wanted info
                     const { heading, urgency, message, signed } = mention;
                     return(
-                        <>
+                        <div key={mention._id}>
+                            
                             {/* // populate page with fetched forum data & dynamically <Link> up each one to own page */}
-                            <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
+                            <Link to={`/forums/forum/${mention._id}`}>
                                 <h2  style={{}} title="Some posts">{heading} [{urgency}]</h2>
                             </Link>
-                            <Link key={heading} to={`/forums/update_mention/${mention._id}`}><button title="To be or not to be">Edit📝</button></Link>
+                            <Link to={`/forums/update_mention/${mention._id}`}>
+                                <button id="edit-btn" title="To be or not to be">Edit📝</button>
+                            </Link>
                             {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
                             {/* DeleteMsg(mention._id); */}
 
@@ -85,7 +88,7 @@ export default function Forums(){
                                     // disabled={task.complete ? false : true} // disabled={!task.complete} works too
                                 />
                             </label>
-                        </>
+                        </div>
                         /* Note: "Warning: Each child in a list should have a unique 'key' prop 
                          appeared when 2nd <Link> component was added... {heading} & {index} after setting .map(mention, index) DN work either" */
                         

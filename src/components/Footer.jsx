@@ -8,6 +8,7 @@ export default function Footer(){
     return(
         <>
         <div className="pulse">
+        
             <nav aria-label="primary"></nav>
             <a href="https://www.facebook.com/" target="_blank" title="Facebook"> 
                 <img src={fb_icon} alt="facebook" />
@@ -24,7 +25,7 @@ export default function Footer(){
             <a href="https://www.qq.com/" target="_blank" title="QQ"> 
                 <img src={qq_icon} alt="qq" />
             </a>
-            <p><i>This website is neither endorsed nor affiliated by any means to any country, institution, or third party entity.</i></p>
+            <p ><i>This website is neither endorsed nor affiliated by any means to any country, institution, or third party entity.</i></p>
         </div>
         </>
     )

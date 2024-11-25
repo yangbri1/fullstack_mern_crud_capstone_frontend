@@ -78,44 +78,55 @@ function CreateFormMsg(){
     return(
         // React fragments to as overhead parent element else error
         <>
-            <h2>Create Forum Message</h2>
+            <h1>Create Forum Message</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="heading">
-                    Heading: {" "}
-                    <input value={formData.heading} onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" required />
+                    <h3>
+                        Heading:{"\t"}
+                        <input value={formData.heading} onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" required />
+                    </h3> 
+                </label>
+                {/* <br /> */}
+                <label htmlFor="urgency">
+                    <h3>
+                        Urgency: {" "}
+                        <input value={formData.urgency} onChange={handleChange} id="urgency" type="number" name="urgency" alt="level of priority" placeholder="Degree of urgency" required />
+                    </h3>
+                </label>
+                {/* <br /> */}
+                <label htmlFor="message">
+                    <h3>
+                        Message: {" "}
+                        <textarea value={formData.message} onChange={handleChange} id="message" type="textarea" name="message" alt="message body" placeholder="Concerns, ideas, advices, ..." required 
+                                        />
+                    </h3>
                     
                 </label>
-                <br />
-                <label htmlFor="urgency">
-                    Urgency: {" "}
-                    <input value={formData.urgency} onChange={handleChange} id="urgency" type="number" name="urgency" alt="level of priority" placeholder="Degree of urgency" required />
-                </label>
-                <br />
-                <label htmlFor="message">
-                    Message: {" "}
-                    <textarea value={formData.message} onChange={handleChange} id="message" type="textarea" name="message" alt="message body" placeholder="Concerns, ideas, advices, ..." required 
-                                    style={{ width: 300, height: 200 }}/>
-                </label>
-                <br />
+                {/* <br /> */}
                 <label htmlFor="signed">
-                    Signed: {" "}
-                    <input value={formData.signed} onChange={handleChange} id="signed" type="text" name="signed" alt="user id" placeholder="User ID" />
+                    <h3>
+                        Signed: {" "}
+                        <input value={formData.signed} onChange={handleChange} id="signed" type="text" name="signed" alt="user id" placeholder="User ID" />
+                    </h3>
+                   
                 </label>
-                <br />
+                {/* <br /> */}
                 <label htmlFor="human">
-                    Human Test: {" "}
-                    {/* Notice: "checked" property here instead of "value" as this is of type checkbox */}
-                    <input checked={formData.human} onChange={handleChange} id="human" type="checkbox" name="human" alt="are you real?" placeholder="Captcha" />
-
+                    <h3>
+                        Human Test: {" "}
+                        {/* Notice: "checked" property here instead of "value" as this is of type checkbox */}
+                        <input checked={formData.human} onChange={handleChange} id="human" type="checkbox" name="human" alt="are you real?" placeholder="Captcha" />
+                    </h3>
+    
                     {/* dropdown menu of options */}
                     {/* <select onChange={handleChange} id="human" type="text" name="human" placeholder="Captcha">
                         <option value="false">BEEP BOOP R.O.B.O.T I A.M.🤖</option>
                         <option value="true">Let me in! I'm human!!🙂</option>
                     </select> */}
                 </label>
-                <br />
+                {/* <br /> */}
                 {/* <button onClick={handleClick}>Send It!</button> */}
-                <button type="submit">Send It!</button>
+                <button id="forum-btn"type="submit">Send It!</button>
 
             </form>
         </>

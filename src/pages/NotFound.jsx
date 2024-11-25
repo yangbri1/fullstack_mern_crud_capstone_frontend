@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 // useNavigate() hook to navigate away w/o use of <Link> component
 import { useNavigate } from "react-router-dom";
-import error_img from "../images/404_img.gif";
+import error_img from "../images/404_img3.gif";
 // create React functional component
 export default function NotFound(){
     // create state "counter" with initial value of 10 (seconds)
