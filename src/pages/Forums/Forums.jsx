@@ -8,6 +8,10 @@ import { Link } from "react-router-dom";
 
 // import DeleteMsg from "./DeleteMsg";
 
+// in this case import axios to delete a post from backend
+/* Note: axios works even when using "fetch" to access backend on other route */
+import axios from 'axios';
+
 /* Note: "Components (little pieces add to a page) are parts of a page (entire URL)" */
 // create React functional component
 export default function Forums(){
@@ -34,15 +38,21 @@ export default function Forums(){
         // getForum();
     }, []); // dependencies list/array set to empty -- only render initially (once)
     
-    // // handler for delete functionality
-    // function handleDelete(id){
-    //     // redeclare state to new changes
-    //     // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
-    //     setPosts(posts.filter(post =>
-    //         // if post's unique "_id" does NOT equal to backend, keep it
-    //         post._id !== id
-    //     ));
-    // }
+    // handler for delete functionality -- always need "async" to pair w/ "await" to fetch data from BE & try-catch (as precaution)
+    async function handleDelete(id){
+        try {
+            const res = await axios.delete(`http://localhost:3000/forums/${id}`)
+            // redeclare state to new changes
+            // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
+            setPosts(posts.filter(post =>
+            // if post's unique "_id" does NOT equal to backend, keep it
+            post._id !== id
+        ));
+        } catch (err) {
+            console.error(err);
+        }
+        
+    }
     return(
         <>
             <h1>Forum Page</h1>
@@ -62,7 +72,7 @@ export default function Forums(){
                             {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
                             {/* DeleteMsg(mention._id); */}
 
-                            {/* <label id="delete-btn">
+                            <label id="delete-btn">
                                 <input type="button" id="delete-btn" value="Delete🗑️" title="Are you sure?"
                                     onClick={() => {
                                         handleDelete(mention._id);
@@ -74,7 +84,7 @@ export default function Forums(){
                                     // Notice: "Delete" button availability depends on "Toggle" (green -- task.complete == true, red -- task.complete == false)
                                     // disabled={task.complete ? false : true} // disabled={!task.complete} works too
                                 />
-                            </label> */}
+                            </label>
                         </>
                         /* Note: "Warning: Each child in a list should have a unique 'key' prop 
                          appeared when 2nd <Link> component was added... {heading} & {index} after setting .map(mention, index) DN work either" */

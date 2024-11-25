@@ -36,40 +36,40 @@ export default function Mention(){
         getData();
     }, []);   // dependencies list/array of [] means only run on initial render 
 
+    // handler for delete functionality
+    async function handleDelete(event){
+        // redeclare state to new changes
+        // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
+        // setInfo(info.filter(post =>
+        //     // if post's unique "_id" does NOT equal to backend, keep it
+        //     post._id !== id
+        // ));
+        // prevent default behavior refresh
+        event.preventDefault();
+
+        try {
+            // if the retrieved post has an unique "_id" (exists -- may be a little redundant but conditional needed)
+            if(info._id){
+                // delete this specific post from backend
+                const res = await axios.delete(`http://localhost:3000/forums/${id}`);
+                // indicate delete status to console
+                console.log("Message successfully deleted", res);
+                // since there's no more post at that endpoint, re-direct back to message board (rest of msgs)
+                nav('/forums');
+            }
+            
+        } catch (err) {
+            console.error(err);
+        }
+    }
+    
     // display when data do NOT exist
     const loading = () => {
         return(<h1>Loading (insert spinner)</h1>)
     }
+
     // loaded function when data is successfully fetched
     const loaded = () => {
-
-        // handler for delete functionality
-        async function handleDelete(event){
-            // redeclare state to new changes
-            // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
-            // setInfo(info.filter(post =>
-            //     // if post's unique "_id" does NOT equal to backend, keep it
-            //     post._id !== id
-            // ));
-            // prevent default behavior refresh
-            event.preventDefault();
-
-            try {
-                // if the retrieved post has an unique "_id" (exists -- may be a little redundant but conditional needed)
-                if(info._id){
-                    // delete this specific post from backend
-                    const res = await axios.delete(`http://localhost:3000/forums/${id}`);
-                    // indicate delete status to console
-                    console.log("Message successfully deleted", res);
-                    // since there's more post at that endpoint, re-direct back to message board (rest of msgs)
-                    nav('/forums');
-                }
-                // after deleting post return back to rest of messages at /forums endpoint 
-                
-            } catch (err) {
-                console.error(err);
-            }
-        }
 
         return(
             // functional components outside of <Routes> components DN change per page, each Route/page may change
