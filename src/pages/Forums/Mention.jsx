@@ -4,12 +4,18 @@ import { useParams } from "react-router-dom";
 // useState() hook to hold state
 import { useEffect, useState } from "react";
 
+import { useNavigate } from "react-router-dom";
+
+import axios from 'axios';
+
 export default function Mention(){
     // destructure to pull out params (:id) from  obj --- dynamic route '/literary_works/literary_work/:id'
     const { id } = useParams();
     
     // initialize state "info" for backend data 
     const [info, setInfo] = useState(null);
+
+    const nav = useNavigate();
 
     // "async" function required to "async" fetch data from db
     async function getData(){
@@ -36,6 +42,35 @@ export default function Mention(){
     }
     // loaded function when data is successfully fetched
     const loaded = () => {
+
+        // handler for delete functionality
+        async function handleDelete(event){
+            // redeclare state to new changes
+            // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
+            // setInfo(info.filter(post =>
+            //     // if post's unique "_id" does NOT equal to backend, keep it
+            //     post._id !== id
+            // ));
+            // prevent default behavior refresh
+            event.preventDefault();
+
+            try {
+                // if the retrieved post has an unique "_id" (exists -- may be a little redundant but conditional needed)
+                if(info._id){
+                    // delete this specific post from backend
+                    const res = await axios.delete(`http://localhost:3000/forums/${id}`);
+                    // indicate delete status to console
+                    console.log("Message successfully deleted", res);
+                    // since there's more post at that endpoint, re-direct back to message board (rest of msgs)
+                    nav('/forums');
+                }
+                // after deleting post return back to rest of messages at /forums endpoint 
+                
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
         return(
             // functional components outside of <Routes> components DN change per page, each Route/page may change
             <>
@@ -43,6 +78,16 @@ export default function Mention(){
                     <h1>{info.heading}</h1>
                     <h3>{info.urgency}</h3>
                     <p>{info.message}</p>
+                    <label id="delete-btn">
+                        <input type="button" id="delete-btn" value="Delete🗑️" title="Are you sure?"
+                            onClick={() => {
+                                handleDelete(info._id);
+                            }}
+                                // dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
+                            // disabled={task.complete ? false : true} // disabled={!task.complete} works too
+                            /* Delete btn only available for right owner login */
+                        />
+                    </label>
                 </div>
             </>
         )

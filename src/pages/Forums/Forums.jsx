@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 // import { getForum } from "../../utilities/controllers.mjs";      // controller functions not working
 
-import DeleteMsg from "./DeleteMsg";
+// import DeleteMsg from "./DeleteMsg";
 
 /* Note: "Components (little pieces add to a page) are parts of a page (entire URL)" */
 // create React functional component
@@ -34,15 +34,15 @@ export default function Forums(){
         // getForum();
     }, []); // dependencies list/array set to empty -- only render initially (once)
     
-    // handler for delete functionality
-    function handleDelete(id){
-        // redeclare state to new changes
-        // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
-        setPosts(posts.filter(post =>
-            // if post's unique "_id" does NOT equal to backend, keep it
-            post._id !== id
-        ));
-    }
+    // // handler for delete functionality
+    // function handleDelete(id){
+    //     // redeclare state to new changes
+    //     // Recall: Do NOT include {} -- from todo list lab: "DON'T else filter will encapsulate ALL posts at hand (delete all when pressed)"
+    //     setPosts(posts.filter(post =>
+    //         // if post's unique "_id" does NOT equal to backend, keep it
+    //         post._id !== id
+    //     ));
+    // }
     return(
         <>
             <h1>Forum Page</h1>
@@ -62,7 +62,7 @@ export default function Forums(){
                             {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
                             {/* DeleteMsg(mention._id); */}
 
-                            <label id="delete-btn">
+                            {/* <label id="delete-btn">
                                 <input type="button" id="delete-btn" value="Delete🗑️" title="Are you sure?"
                                     onClick={() => {
                                         handleDelete(mention._id);
@@ -74,7 +74,7 @@ export default function Forums(){
                                     // Notice: "Delete" button availability depends on "Toggle" (green -- task.complete == true, red -- task.complete == false)
                                     // disabled={task.complete ? false : true} // disabled={!task.complete} works too
                                 />
-                            </label>
+                            </label> */}
                         </>
                         /* Note: "Warning: Each child in a list should have a unique 'key' prop 
                          appeared when 2nd <Link> component was added... {heading} & {index} after setting .map(mention, index) DN work either" */

@@ -87,7 +87,8 @@ function UpdateFormMsg(){
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="heading">
                             Heading: {" "}
-                            <input value={formData.heading || ""} onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" required />
+                            <input value={formData.heading || ""} onChange={handleChange} id="heading" type="text" name="heading" alt="topic of enclosed message" placeholder="Topic" required 
+                            defaultValue={formData.heading}/>
                     
                         </label>
                         <br />
