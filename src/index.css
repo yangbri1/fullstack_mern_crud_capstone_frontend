@@ -8,11 +8,12 @@
   /* background-color: #242424; */
   /* background: linear-gradient(132deg, rgb(255, 206, 236) 0.00%, rgb(151, 150, 240) 100.00%); */
   /* background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); */
-  background: linear-gradient(132deg, rgb(30, 144, 255) 0.00%, rgb(138, 43, 226) 100.00%);
+  /* background: linear-gradient(132deg, rgb(30, 144, 255) 0.00%, rgb(138, 43, 226) 100.00%); */
   /* background: linear-gradient(199deg, rgb(251, 165, 116) 42.37%, rgb(216, 245, 251) 100.00%); */
   background: linear-gradient(132deg, rgb(237, 19, 19) 0.00%, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%);
   /* background: linear-gradient(132deg, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%, rgb(237, 19, 19) 100.00%); */
   /* background: linear-gradient(0deg, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%, rgb(237, 19, 19) 100.00%); */
+  /* background: linear-gradient(278deg, rgb(255, 206, 236) 0.00%, rgb(151, 150, 240) 100.00%); */
   opacity: 1;
   transition: opacity 3s;
   font-synthesis: none;

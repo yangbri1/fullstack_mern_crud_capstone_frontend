@@ -66,7 +66,7 @@ export default function Forums(){
                         <>
                             {/* // populate page with fetched forum data & dynamically <Link> up each one to own page */}
                             <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
-                                <h3 title="Some posts">{heading} [{urgency}]</h3>
+                                <h2  style={{}} title="Some posts">{heading} [{urgency}]</h2>
                             </Link>
                             <Link key={heading} to={`/forums/update_mention/${mention._id}`}><button title="To be or not to be">Edit📝</button></Link>
                             {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
@@ -92,7 +92,7 @@ export default function Forums(){
                         // <>
                         //     <h2>{heading}</h2>
                         //     <h4>{message}</h4>
-                        //     <p><b>Username</b>: <i>{signed}</i></p>
+                        //     <h3><b>Username</b>: <i>{signed}</i></p>
                         // </> 
                     );
                 // if posts do NOT exist push out "Loading ..." indicator
