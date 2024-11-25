@@ -55,8 +55,8 @@ export default function Forums(){
     }
     return(
         <>
-            <h1>Forum Page</h1>
-            <div className="msg_board">
+            <h1 title="Community posts here" alt="Community forums">Forum Page</h1>
+            <div className="msg_board" alt="List of posts below">
                 {/* if posts exists, call JS array method .map() on it to create a new copy w/ wanted filters */}
                 {posts ? posts.map((mention) => {
                 {/* {getForum() ? getForum().map((mention) => { */}
@@ -66,9 +66,9 @@ export default function Forums(){
                         <>
                             {/* // populate page with fetched forum data & dynamically <Link> up each one to own page */}
                             <Link key={mention._id} to={`/forums/forum/${mention._id}`}>
-                                <h3>{heading} [{urgency}]</h3>
+                                <h3 title="Some posts">{heading} [{urgency}]</h3>
                             </Link>
-                            <Link key={heading} to={`/forums/update_mention/${mention._id}`}>Edit</Link>
+                            <Link key={heading} to={`/forums/update_mention/${mention._id}`}><button title="To be or not to be">Edit📝</button></Link>
                             {/* <Link to={`/forums/delete_mention/${mention._id}`}>Delete</Link> */}
                             {/* DeleteMsg(mention._id); */}
 

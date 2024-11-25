@@ -13,13 +13,15 @@ import Animations from './pages/Animations/Animations.jsx';
 import Name_Ani from './pages/Animations/Name_Ani.jsx';
 import Literary_Works from './pages/Literary_Works/Literary_Works.jsx';
 import Title_LW from './pages/Literary_Works/Title_LW.jsx';
-import CreateFormMsg from './pages/CreateFormMsg.jsx';
+import CreateFormMsg from './pages/Forums/CreateFormMsg.jsx';
 import Mention from './pages/Forums/Mention.jsx';
-import UpdateFormMsg from './pages/Literary_Works/UpdateFormMsg.jsx';
+import UpdateFormMsg from './pages/Forums/UpdateFormMsg.jsx';
 import DeleteMsg from './pages/Forums/DeleteMsg.jsx';
 
 // bring in navigation links to App.jsx rather than individual pages (more efficient & App.jsx is the brain of the operation)
 import NavBar from './components/NavBar.jsx';
+// import custom <Footer> component
+import Footer from './components/Footer.jsx';
 
 function App() {
 
@@ -50,7 +52,8 @@ function App() {
         {/* catch all route for any unforeseen URL paths (should be last in order otw may interfere w/ other routes) */}
         <Route path='*' element={<NotFound />} />
       </Routes>
-      <footer>Affiliations/Social Media -- maybe change to component later</footer>
+      {/* <footer>Affiliations/Social Media -- maybe change to component later</footer> */}
+      <Footer />
     </>
   )
 }
