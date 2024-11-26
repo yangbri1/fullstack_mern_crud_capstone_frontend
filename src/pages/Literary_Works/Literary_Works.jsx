@@ -2,9 +2,12 @@
 import { Link } from "react-router-dom";
 // import useState(), useEffect() React hooks combo to manage 
 import { useEffect, useState } from "react";
+// import custom loading spinner functional component
+import Loading from "../../components/Loading";
 
+// create React functional component 
 export default function Literary_Works(){
-
+    // declare a state for this functional component -- to fetch backend data 
     let [works, setWorks] = useState(null);
 
     // sample data from "literary_work_data.mjs" in the back-end server
@@ -38,21 +41,26 @@ export default function Literary_Works(){
         }
     ];
 
+    // fetching from backend server
     useEffect(() => {
+        // require "async" function in order to "asynchronously" fetch from backend (and to use "await")
         async function getData(){
             try {
+                // fetching from backend always require "async"/"await" as well as most of time try-catch (b/c why not)
                 let res = await fetch(`http://localhost:3000/literary_works/`);
                 let data = await res.json();    // this step automatically done if using axios
-                
+                // change state to retrieve data from backend
                 setWorks(data);
             } catch (err) {
                 console.error(err);
             }
         }
+        // invoke getData() to fetch info from backend server
         getData();
     }, []); // dependencies array set to empty -- only run once on initial render
 
     return(
+        // React fragment
         <>
             <h1>List of Literary Works</h1>
             <div className="literary_works">
@@ -67,7 +75,7 @@ export default function Literary_Works(){
                             <h3>{title} [{type}]</h3>
                         </Link>
                     );
-                }) : <h1>Loading ... </h1>}
+                }) : <h1>Loading <Loading /> </h1>}
             </div>
         </>
     

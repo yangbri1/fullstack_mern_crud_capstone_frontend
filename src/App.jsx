@@ -23,6 +23,9 @@ import NavBar from './components/NavBar.jsx';
 // import custom <Footer> component
 import Footer from './components/Footer.jsx';
 
+// did not import here as it would place the News API on ever page
+// import News from './components/News.jsx';
+
 function App() {
 
   // const [drama, setDrama] = useState(null); // for later 3rd party API use
@@ -52,6 +55,7 @@ function App() {
         {/* catch all route for any unforeseen URL paths (should be last in order otw may interfere w/ other routes) */}
         <Route path='*' element={<NotFound />} />
       </Routes>
+      {/* <News /> */}
       {/* <footer>Affiliations/Social Media -- maybe change to component later</footer> */}
       <Footer />
     </>

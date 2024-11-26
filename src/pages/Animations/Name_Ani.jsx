@@ -26,8 +26,8 @@ export default function Name_Ani(){
     }
     // useEffect setup w/ arrow fn
     useEffect(() => {
-    // invoke getData() fn to connect to custom server-side db & retrieve collections from db
-    getData();
+        // invoke getData() fn to connect to custom server-side db & retrieve collections from db
+        getData();
     }, []);   // dependencies list/array of [] means only run on initial render 
 
     // display when data do NOT exist

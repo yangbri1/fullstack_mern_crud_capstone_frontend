@@ -126,7 +126,7 @@ function CreateFormMsg(){
                 </label>
                 {/* <br /> */}
                 {/* <button onClick={handleClick}>Send It!</button> */}
-                <button id="forum-btn"type="submit">Send It!</button>
+                <button id="forum-btn"type="submit">Send 🔍</button>
 
             </form>
         </>

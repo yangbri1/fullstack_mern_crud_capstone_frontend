@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 Why not just use <Link>? --- What if there's no button to prompt Link action? --> useNavigate() comes in play */
 import { useNavigate } from "react-router-dom";
 
+import News from "../components/News";
+
 // create React functional component
 export default function Home(){
     // initialize state to hold input form data w/ initial value of empty String "", later setFormData function will manipulate state
@@ -40,16 +42,17 @@ export default function Home(){
         // React fragments needed as React only returns 1 parent
         <>
             {/* window.alert("hello infected") */}
-            <h1>How much does it cost for a feature?</h1>
+            <h1>Today's Headlines</h1>
             {/* fires off handleSubmit() function upon submission */}
-            <form onSubmit={handleSubmit}>
+            {/* <form onSubmit={handleSubmit}>
                 <label htmlFor="search-bar">
-                    {/* Why not onClick? -- Only accounts for button clicks not entering */}
+                    //Why not onClick? -- Only accounts for button clicks not entering
                     <input onChange={handleChange} id="search-bar" placeholder="Pick a song" title="Choose a song" type="text"  />
                     <input id="search-btn" type="submit"  />
                 </label>
-                
-            </form>
+            </form> */}
+
+            <News />
         </>
     );
 }

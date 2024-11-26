@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 // <Link> components to navigate to other pages via visible button, links, etc.
 import { Link } from "react-router-dom";
 
+// import custom loading spinner from <Loading /> functional component
+import Loading from "../../components/Loading";
+
 export default function Animations(){
     // declare variable to store parameters
     // Note: if know params' name can useParams() hook to destructure in place otw will have to use dot notation to call upon properties from params obj {}
@@ -48,7 +51,7 @@ export default function Animations(){
                             <h3>{name} [{year}]</h3>
                         </Link>
                     );
-                }) : <h1>Loading ... </h1>}
+                }) : <h1>Loading <Loading /> </h1>}
             </div>
         </>
     
