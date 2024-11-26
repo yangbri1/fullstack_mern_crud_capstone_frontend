@@ -78,16 +78,7 @@ export default function Mention(){
                     <h1>{info.heading}</h1>
                     <h3>{info.urgency}</h3>
                     <p>{info.message}</p>
-                    <label id="delete-btn">
-                        <input type="button" id="delete-btn" value="Delete🗑️" title="Are you sure?"
-                            onClick={() => {
-                                handleDelete(info._id);
-                            }}
-                                // dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
-                            // disabled={task.complete ? false : true} // disabled={!task.complete} works too
-                            /* Delete btn only available for right owner login */
-                        />
-                    </label>
+                    
                 </div>
             </>
         )
